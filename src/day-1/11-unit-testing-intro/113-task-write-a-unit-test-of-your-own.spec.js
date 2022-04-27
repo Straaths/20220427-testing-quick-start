@@ -17,13 +17,12 @@
  *  Rozpisz przypadki testowe, zaimplementuj funkcję.
  * */
 
+
 function attachProfession(user, profession = 'unknown') {
-    const newUser = {};
-    for(const key in user) {
-        newUser[key] = user[key];
-    }
-    newUser.profession = profession;
-    return newUser;
+    return {
+        ...user,
+        profession
+    };
 }
 
 describe.only('attachProfession', () => {
@@ -51,6 +50,18 @@ describe.only('attachProfession', () => {
         })
     });
     
+    it('should override users existing profession', () => {
+        const user = {name: 'John', profession: 'pilot'};
+        const profession = 'programmer';
+        
+        const resultUser = attachProfession(user, profession);
+        
+        expect(resultUser).toEqual({
+            name: 'John',
+            profession: 'programmer'
+        })
+    });
+    
     it('should not mutate provided user object', () => {
         const emptyUser = {};
         const profession = 'pilot'
@@ -58,6 +69,7 @@ describe.only('attachProfession', () => {
         const resultUser = attachProfession(emptyUser, profession);
         
         expect(resultUser).not.toBe(emptyUser)
+        expect(emptyUser).toEqual({});
     }); 
 }) 
 
