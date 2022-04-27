@@ -20,11 +20,22 @@
  *
  * */
 
-function divide(dividend, divisor) {}
+function divide(dividend, divisor) {
+    if(divisor === 0) {
+        throw new Error('You cannot divide by 0')
+    } 
+    return dividend / divisor;
+}
 
-test('should properly divide positive numbers', () => {});
+test('should properly divide positive numbers', () => {
+    expect(divide(10, 5)).toBe(2)
+});
 
-test('should properly divide negative numbers', () => {});
+test('should properly divide negative numbers', () => {
+    expect(divide(-10, -5)).toBe(2)
+});
 
 // Extra task:
-test('*should throw error when divisor is equal 0 like "You cannot divide by 0"', () => {});
+test('*should throw error when divisor is equal 0 like "You cannot divide by 0"', () => {
+    expect(() => divide(2310, 0)).toThrowError('You cannot divide by 0')
+});
