@@ -28,14 +28,34 @@ function divide(dividend, divisor) {
 }
 
 test('should properly divide positive numbers', () => {
-    expect(divide(10, 5)).toBe(2)
+     // [A]arrange // Given
+     const dividend = 10;
+     const divisor = 5;
+     
+     // [A]act // When
+     const result = divide(dividend, divisor)
+     
+     // [A]assert // Then
+     expect(result).toBe(2)
 });
 
 test('should properly divide negative numbers', () => {
-    expect(divide(-10, -5)).toBe(2)
+       // [A]arrange // Given
+       const dividend = -10;
+       const divisor = -5;
+       
+       // [A]act // When
+       const result = divide(dividend, divisor)
+       
+       // [A]assert // Then
+       expect(result).toBe(2)
 });
 
 // Extra task:
 test('*should throw error when divisor is equal 0 like "You cannot divide by 0"', () => {
-    expect(() => divide(2310, 0)).toThrowError('You cannot divide by 0')
+    // [A]arrange // Given
+    const theZeroDivisor = 0;
+    
+     // [A]act + [A]assert
+    expect(() => divide(2340, theZeroDivisor)).toThrowError('You cannot divide by 0')
 });
