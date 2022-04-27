@@ -12,15 +12,52 @@
  *
  *   przykład wywołania:
  *   attachProfession({}, "programmer")  ---- wynik: { profession: 'programmer' }
- *   attachProfesssion({name: 'John'}) ---- wynik: { name: 'John', profession: 'unknown' }
+ *   attachProfession({name: 'John'}) ---- wynik: { name: 'John', profession: 'unknown' }
  *
  *  Rozpisz przypadki testowe, zaimplementuj funkcję.
  * */
 
-function attachProfession(user, profession) {}
+function attachProfession(user, profession = 'unknown') {
+    const newUser = {};
+    for(const key in user) {
+        newUser[key] = user[key];
+    }
+    newUser.profession = profession;
+    return newUser;
+}
 
-it.todo('should ');
+describe.only('attachProfession', () => {
+    it('should attach given profession to provided user', () => {
+        
+        const user = {name: 'John'};
+        const profession = 'programmer';
+        
+        const resultUser = attachProfession(user, profession);
+        
+        expect(resultUser).toEqual({
+            name: 'John',
+            profession: 'programmer'
+        })
+    });
 
-it.todo('should ');
+    it('should attach default "unknown" profession to provided user, when profession no provided', () => {
+        const user = {name: 'John'};
+        
+        const resultUser = attachProfession(user);
+        
+        expect(resultUser).toEqual({
+            name: 'John',
+            profession: 'unknown'
+        })
+    });
+    
+    it('should not mutate provided user object', () => {
+        const emptyUser = {};
+        const profession = 'pilot'
+        
+        const resultUser = attachProfession(emptyUser, profession);
+        
+        expect(resultUser).not.toBe(emptyUser)
+    }); 
+}) 
 
-it.todo('should ');
