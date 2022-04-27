@@ -7,6 +7,8 @@
     "start": "vite --open",
     "test": "jest",
     "test:watch": "npm run test -- --watchAll",
+    "test:form-validators": "npm run test:watch -- src/validators/form-validators.spec.js",
+    "test:form-errors": "npm run test:watch -- src/validators/form-errors.spec.js",
     "build": "vite build",
     "preview": "vite preview"
   },
