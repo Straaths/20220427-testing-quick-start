@@ -25,7 +25,7 @@ function attachProfession(user, profession = 'unknown') {
     };
 }
 
-describe.only('attachProfession', () => {
+describe('attachProfession', () => {
     it('should attach given profession to provided user', () => {
         
         const user = {name: 'John'};
