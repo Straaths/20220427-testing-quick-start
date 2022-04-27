@@ -24,5 +24,6 @@
   },
   "dependencies": {
     "bulma": "^0.9.3"
-  }
+  },
+  "type":"module"
 }
